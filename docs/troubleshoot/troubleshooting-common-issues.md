@@ -6,32 +6,35 @@ previous_url: /troubleshooting
 slug: troubleshooting_common_issues_kendoui
 ---
 
-# Common Issues
+# Common Issues with Kendo UI Widgets
 
-This page provides solutions for common problems you may encounter while working with Kendo UI widgets.
+This page provides solutions for common problems that you may encounter while working with all Kendo UI widgets. For issues that are specific to individual widgets, refer to the widget's own troubleshooting page.
 
 ## Offline Examples
 
-### Examples Fail to Load Sample Data
+### Issue: Examples Fail to Load Sample Data
 
 The most common cause for this error is loading the demos from the file system. Google Chrome, for example, will disallow accessing the JSON files needed for the demos to run.
 
-**Solution**
+### Solution
 
 Host the offline demos on a web server and load them from there.
 
 ## jQuery
 
-### jQuery Is Unavailable or Undefined
+### Issue: jQuery Is Unavailable or Undefined
 
-If jQuery is not included, or is included after the Kendo UI JavaScript files, or is included after Kendo UI widget initialization statements, the Kendo UI widgets will not function as expected.
+The Kendo UI widgets will not function as expected in the following cases:
+* If jQuery is not included
+* If jQuery is included after the Kendo UI JavaScript files
+* If jQuery is included after Kendo UI widget initialization statements
 
-The following JavaScript errors will be thrown (depending on the browser):
+As a result, the following JavaScript errors will be thrown (depending on the browser):
 
 * `ReferenceError: jQuery is not defined` (in Google Chrome and Firefox)
 * `jQuery is undefined` (in Internet Explorer)
 
-**Solution**
+### Solution
 
 Make sure that jQuery is included only before the Kendo UI JavaScript files and before any JavaScript statements that depend on it.
 
