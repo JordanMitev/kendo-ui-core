@@ -36,13 +36,15 @@ As a result, the following JavaScript errors will be thrown (depending on the br
 
 ### Solution
 
-Make sure that jQuery is included only before the Kendo UI JavaScript files and before any JavaScript statements that depend on it.
+Make sure that jQuery is included only:
+* before the Kendo UI JavaScript files, and
+* before any JavaScript statements that depend on it.
 
 ## Widgets
 
-### Widgets Are Unavailable or Undefined
+### Issue: Widgets Are Unavailable or Undefined
 
-If jQuery is included more than once in the page all existing jQuery plugins (including Kendo UI) will be wiped out. Will also occur if the [required jQuery file]({% slug jquerysupport_kendoui %}) is not included.
+If jQuery is included more than once in the page, all existing jQuery plugins (including Kendo UI) will be wiped out. The same behaviour will also occur if the [required jQuery file](https://docs.telerik.com/kendo-ui/intro/supporting/jquery-support) is not included.
 
 Depending on the browser, the following JavaScript errors will be thrown:
 
@@ -55,7 +57,7 @@ Depending on the browser, the following JavaScript errors will be thrown:
 >
 > Not just the Kendo UI Grid, but all Kendo UI widgets are affected by this issue with only the error message being different. For example, `kendoChart is not a function` or `Object has no method kendoEditor`.
 
-**Solution**
+### Solution
 
 Make sure jQuery is not included more than once in your page. Remove any duplicate `script` references to jQuery. Include all [required Kendo JavaScript files]({% slug jquerysupport_kendoui %}).
 
