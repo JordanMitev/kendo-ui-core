@@ -24,10 +24,10 @@ Host the offline demos on a web server and load them from there.
 
 ### Issue: jQuery Is Unavailable or Undefined
 
-The Kendo UI widgets will not function as expected in the following cases:
-* If jQuery is not included
-* If jQuery is included after the Kendo UI JavaScript files
-* If jQuery is included after Kendo UI widget initialization statements
+The Kendo UI widgets will not function as expected in the following scenarios:
+* If jQuery is not included; or
+* If jQuery is included after the Kendo UI JavaScript files; or
+* If jQuery is included after Kendo UI widget initialization statements.
 
 As a result, the following JavaScript errors will be thrown (depending on the browser):
 
@@ -37,7 +37,7 @@ As a result, the following JavaScript errors will be thrown (depending on the br
 ### Solution
 
 Make sure that jQuery is included only:
-* before the Kendo UI JavaScript files, and
+* before the Kendo UI JavaScript files; and
 * before any JavaScript statements that depend on it.
 
 ## Widgets
@@ -59,11 +59,11 @@ Depending on the browser, the following JavaScript errors will be thrown:
 
 ### Solution
 
-Make sure jQuery is not included more than once in your page. Remove any duplicate `script` references to jQuery. Include all [required Kendo JavaScript files]({% slug jquerysupport_kendoui %}).
+Make sure that jQuery is not included more than once in your page. Remove any duplicate `script` references to jQuery. Include all [required Kendo JavaScript files](https://docs.telerik.com/kendo-ui/intro/supporting/jquery-support).
 
-### Widgets Cannot Be Initialized in Internet Explorer Compatibility Mode
+### Issue: Widgets Cannot Be Initialized in Internet Explorer Compatibility Mode
 
-Kendo widgets provide a WAI-ARIA support, which means that some ARIA-specific attributes are added to the HTML element. When a widget tries to add an ARIA attribute using [jQuery's `attr` method](http://api.jquery.com/attr/), which in turn calls the [`Element.setAttribute` method](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute), the Internet Explorer in Compatibility mode will raise a JavaScript error with the following message:
+Kendo widgets provide a WAI-ARIA support. This means that some ARIA-specific attributes are added to the HTML element. When a widget tries to add an ARIA attribute using [jQuery's `attr` method](http://api.jquery.com/attr/), which in turn calls the [`Element.setAttribute` method](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute), Internet Explorer in Compatibility mode will raise a JavaScript error with the following message:
 
 * SCRIPT3: Member not found (in Internet Explorer 10+ in Compatibility Mode)
 
@@ -74,9 +74,9 @@ where more information can be found.
 >
 > All Kendo widgets, which add ARIA attributes to HTML elements, will be affected.
 
-**Solution**
+### Solution
 
-**Option 1** Force the Internet Explorer to use the Edge mode:
+**Option 1** Force Internet Explorer to use the Edge mode:
 
  ```
  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -84,7 +84,7 @@ where more information can be found.
 
 **Option 2** Path jQuery. You can find more information about the possible path in the aforementioned jQuery bug report.
 
-### Unknown DataSource transport type json Warning Is Displayed
+### Issue: `Unknown DataSource transport type json` Warning Is Displayed
 
 The `Unknown DataSource transport type json` warning might be caused by either of the following reasons:
 
@@ -98,13 +98,15 @@ The `Unknown DataSource transport type json` warning might be caused by either o
 
 * A JavaScript file is missing when using a DataSource type that is not included in `kendo.all.min.js`. For example, `aspnetmvc-ajax`, `jsdo`, and others. Specifically, `json` is not a valid DataSource `type` and it does not require a separate JavaScript file.
 
-**Solution**
+### Solution
 
-Use a valid `type` value, or remove the `type` property, or add the corresponding missing file&mdash;for example, `kendo.aspnetmvc.min.js` when using the Kendo UI MVC wrappers.
+* Use a valid `type` value; or 
+* remove the `type` property; or
+* add the corresponding missing file&mdash;for example, `kendo.aspnetmvc.min.js` when using the Kendo UI MVC wrappers.
 
 Note that the [dataSource `type`](/api/javascript/data/datasource/configuration/type) differs from the [`type` of the transport actions](/api/javascript/data/datasource/configuration/transport.read.type).
 
-### Widget Throws the e.slice is not a function Error
+### Issue: Widget Throws the `e.slice is not a function Error`
 
 The `Uncaught TypeError: e.slice is not a function` error indicates that the response which is received from the remote data source is not an array while the widget expects a simple array for its data source.
 
