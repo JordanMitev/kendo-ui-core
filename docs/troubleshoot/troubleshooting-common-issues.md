@@ -44,7 +44,7 @@ Make sure that jQuery is included only:
 
 ### Issue: Widgets Are Unavailable or Undefined
 
-If jQuery is included more than once in the page, all existing jQuery plugins (including Kendo UI) will be wiped out. The same behaviour will also occur if the [required jQuery file](https://docs.telerik.com/kendo-ui/intro/supporting/jquery-support) is not included.
+If jQuery is included more than once in the page, all existing jQuery plugins (including Kendo UI) will be wiped out. The same behavior will also occur if the [required jQuery file](https://docs.telerik.com/kendo-ui/intro/supporting/jquery-support) is not included.
 
 Depending on the browser, the following JavaScript errors will be thrown:
 
@@ -110,7 +110,7 @@ Note that the [dataSource `type`](/api/javascript/data/datasource/configuration/
 
 The `Uncaught TypeError: e.slice is not a function` error indicates that the response which is received from the remote data source is not an array while the widget expects a simple array for its data source.
 
-Widgets like the TreeView or the MultiSelect need only a simple array. Conversly, Grid needs an envelope with additional information such as total, errors, and aggregates. For more information on what information each widget expects, review the demo of the respective control.
+Widgets like the TreeView or the MultiSelect need only a simple array. Conversely, Grid needs an envelope with additional information such as total, errors, and aggregates. For more information on what information each widget expects, review the demo of the respective control.
 
 The possible causes for the `e.slice is not a function` error can be any or a combination of the following:
 
@@ -255,7 +255,7 @@ The example below demonstrates how to configure the IIS `Web.config`. If the mim
 
 ### Issue: Widget Object Is Undefined after Loading a Page through AJAX
 
-This usuallly happens when the page loaded via AJAX contains a script reference to jQuery. When jQuery is re-initialized, all jQuery-based data attributes are cleared, including the data(`kendoWidget`) attribute that holds the Kendo UI widget object.
+This usually happens when the page loaded via AJAX contains a script reference to jQuery. When jQuery is re-initialized, all jQuery-based data attributes are cleared, including the data(`kendoWidget`) attribute that holds the Kendo UI widget object.
 
 **Solution**
 
