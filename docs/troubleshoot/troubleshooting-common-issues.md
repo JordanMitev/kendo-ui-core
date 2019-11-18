@@ -155,7 +155,7 @@ This will happen if two or more widgets are initialized from elements with ident
 
 **Solution**
 
-The ID for each element on the page should be unique.
+The ID for each element on the page must be unique.
 
 	<textarea id="editor"></textarea>
 	<textarea id="editor"></textarea>
@@ -164,22 +164,32 @@ The ID for each element on the page should be unique.
 		$('#editor').kendoEditor(); // problem
 	</script>
 
-### When Creating Multiple Widgets Only One of Them Works
+### Issue: When Creating Multiple Widgets Only One of Them Works
 
-For a solution, see the [Creating Multiple Widgets Throws JavaScript Errors](#creating-multiple-widgets-throws-javascript-errors) section above.
+**Solution** 
 
-### Third-Party Modal Popups Prevent Access to Kendo UI Widgets
+See section [Creating Multiple Widgets Throws JavaScript Errors](#issue-creating-multiple-widgets-throws-javascript-errors).
 
-Some third-party modal popups prevent access to focusable elements, which are rendered outside the modal popup. Such widgets include the Bootstrap modal dialog, the jQuery UI modal dialog, and possibly others. The Kendo UI widgets, which are affected by this behavior are all widgets, which render their own detached popups, e.g. AutoComplete, ColorPicker, ComboBox, DropDownList, DateTimePicker, Editor, Grid, and MultiSelect. The popups of these Kendo UI widgets are rendered as children of the `<body>` and as a result, the third-party modal popup will prevent access to them.
+### Issue: Third-Party Modal Popups Prevent Access to Kendo UI Widgets
+
+Some third-party modal popups prevent access to focusable elements that are rendered outside the modal popup. Such widgets include the Bootstrap modal dialog, the jQuery UI modal dialog, and possibly others. All Kendo UI widgets that render their own detached popups are affected by this behavior. For example:
+* AutoComplete
+* ColorPicker
+* ComboBox 
+* DropDownList 
+* DateTimePicker 
+* Editor 
+* Grid 
+* MultiSelect
+
+The popups of these Kendo UI widgets are rendered as children of the `<body>`. As a result, the third-party modal popup will prevent access to them.
 
 **Solution**
-
-There are two ways to avoid this problem:
 
 * Disable the modal popup's modality, so that elements outside it can be focused.
 * Use a [modal](/api/javascript/ui/window/configuration/modal) [Kendo UI Window]({% slug overview_kendoui_window_widget %}) instead of a third-party popup.
 
-### Widgets Do Not Work Correctly on Touch Devices
+### Issue: Widgets Do Not Work Correctly on Touch Devices
 
 Client libraries that interfere with touch events, such as FastClick, are not compatible with Kendo UI and may break the behavior of the widgets. For example, they may cause a drop-down list to close immediately after opening.
 
@@ -187,43 +197,45 @@ Client libraries that interfere with touch events, such as FastClick, are not co
 
 For more information on this issue, refer to [What Exactly Is... The 300ms Click Delay](http://www.telerik.com/blogs/what-exactly-is.....-the-300ms-click-delay).
 
-### Widget Popup Is Offset Incorrectly in Internet Explorer
+### Issue: Widget Popup Is Offset Incorrectly in Internet Explorer
 
 When Kendo UI is used with jQuery `1.12.0` or `2.2.0`, some issues with the popup positioning might occur. The popup is offset incorrectly when the page is scrolled.
 
 **Solution**
 
-The reason for this issue is a bug in the aforementioned jQuery version. According to jQuery's bug tracker, it will be addressed in the next patch release of jQuery. For more details, refer to [https://github.com/telerik/kendo-ui-core/issues/1375](https://github.com/telerik/kendo-ui-core/issues/1375).
+The reason is a bug in the aforementioned jQuery version. According to jQuery's bug tracker, it will be addressed in the next patch release of jQuery. For more details, refer to [https://github.com/telerik/kendo-ui-core/issues/1375](https://github.com/telerik/kendo-ui-core/issues/1375).
 
-### Incorrect Appearance or Errors Occur in Hidden Widgets
+### Issue: Incorrect Appearance or Errors Occur in Hidden Widgets
 
 If you display widgets that have been in an initially hidden container, call their [`resize()`](/api/javascript/ui/widget/methods/resize) method after you show them. Initializing widgets on elements with the `style="display: none;"` configuration might cause errors, such as inability to calculate dimensions and positions or even throw errors. The reason for this behavior is that such calculations are not available for elements that are not rendered by the browser.
 
 **Solution**
 
-Usually, delaying the widget initialization until after it is displayed resolves the issue and improves the page performance.
+Delaying the widget initialization until after it is displayed usually resolves the issue and improves the page performance.
 
 ## CDN
 
-### Scripts or Stylesheets Do Not Load from CDN
+### Issue: Scripts or Stylesheets Do Not Load from CDN
 
-For a solution, refer to [Kendo UI CDN Fallback and Troubleshooting]({% slug kendoui_cdn_services_installation %}#troubleshooting).
+**Solution**
+
+Refer to [Kendo UI CDN Fallback and Troubleshooting]({% slug kendoui_cdn_services_installation %}#troubleshooting).
 
 ## Status Codes
 
-### 404 Status Code Is Thrown for WOFF or TTF Font Files
+### Issue: 404 Status Code Is Thrown for WOFF or TTF Font Files
 
-For a solution, refer to [Serving Font Files]({% slug hybridiconfonts_hybridkendoui %}#serving-font-files).
+**Solution**
 
-### 404 Status Code Is Thrown for JSON Files on IIS
+Refer to [Serving Font Files]({% slug hybridiconfonts_hybridkendoui %}#serving-font-files).
+
+### Issue: 404 Status Code Is Thrown for JSON Files on IIS
 
 By default, IIS does not serve files with unknown extensions. The mime types can be specified either through the IIS management console (inetmgr) or in the site `Web.config`.
 
 **Solution**
 
-The example below demonstrates how to configure the IIS `Web.config`. Note the mime is removed first to avoid clashes if it is already defined.
-
-
+The example below demonstrates how to configure the IIS `Web.config`. If the mime is already defined, it must be removed on the preceding line. This helps to avoid clashes.
 
 ```xml
     <?xml version="1.0"?>
@@ -241,9 +253,9 @@ The example below demonstrates how to configure the IIS `Web.config`. Note the m
 
 ## Ajax
 
-### Widget Object Is Undefined after Loading a Page through AJAX
+### Issue: Widget Object Is Undefined after Loading a Page through AJAX
 
-This issue is usually caused when the page loaded via AJAX contains a script reference to jQuery. When jQuery is re-initialized, all jQuery-based data attributes are cleared, including the data(`kendoWidget`) attribute that holds the Kendo UI widget object.
+This usuallly happens when the page loaded via AJAX contains a script reference to jQuery. When jQuery is re-initialized, all jQuery-based data attributes are cleared, including the data(`kendoWidget`) attribute that holds the Kendo UI widget object.
 
 **Solution**
 
@@ -278,13 +290,13 @@ The example below demonstrates the solution of the test issue above.
 
 ## Styles and Themes
 
-### Icons Disappear after Upgrade
+### Issue: Icons Disappear after Upgrade
 
 As of the R1 2017 release, Kendo UI widgets utilize font-icons instead of sprites. This approach outdates some CSS, which are now removed from the built-in styles.
 
 **Solution**
 
-To provide for the backward compatibility of any custom icons you add to your project, include the following styles in your application:
+To provide backward compatibility for any custom icons that you add to your project, include the following styles in your application:
 
 ```css
 /* Provides backward compatibility support for custom sprites */
