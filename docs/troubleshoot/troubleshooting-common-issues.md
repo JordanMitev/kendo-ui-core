@@ -187,7 +187,7 @@ The popups of these Kendo UI widgets are rendered as children of the `<body>`. A
 **Solution**
 
 * Disable the modal popup's modality, so that elements outside it can be focused.
-* Use a [modal](/api/javascript/ui/window/configuration/modal) [Kendo UI Window]({% slug overview_kendoui_window_widget %}) instead of a third-party popup.
+* Use a [modal](/api/javascript/ui/window/configuration/modal) [Kendo UI Window](https://github.com/JordanMitev/kendo-ui-core/blob/master/docs/controls/layout/window/overview.md) instead of a third-party popup.
 
 ### Issue: Widgets Do Not Work Correctly on Touch Devices
 
@@ -219,7 +219,7 @@ Delaying the widget initialization until after it is displayed usually resolves 
 
 **Solution**
 
-Refer to [Kendo UI CDN Fallback and Troubleshooting]({% slug kendoui_cdn_services_installation %}#troubleshooting).
+Refer to [Kendo UI CDN Fallback and Troubleshooting](https://github.com/JordanMitev/kendo-ui-core/blob/master/docs/intro/installation/cdn-service.md#troubleshooting).
 
 ## Status Codes
 
@@ -227,7 +227,7 @@ Refer to [Kendo UI CDN Fallback and Troubleshooting]({% slug kendoui_cdn_service
 
 **Solution**
 
-Refer to [Serving Font Files]({% slug hybridiconfonts_hybridkendoui %}#serving-font-files).
+Refer to [Serving Font Files](https://github.com/JordanMitev/kendo-ui-core/blob/master/docs/troubleshoot/troubleshooting-common-issues.md#serving-font-files).
 
 ### Issue: 404 Status Code Is Thrown for JSON Files on IIS
 
