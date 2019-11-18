@@ -16,7 +16,7 @@ This page provides solutions for common problems that you may encounter while wo
 
 The most common cause for this error is loading the demos from the file system. Google Chrome, for example, will disallow accessing the JSON files needed for the demos to run.
 
-### Solution
+**Solution**
 
 Host the offline demos on a web server and load them from there.
 
@@ -34,7 +34,7 @@ As a result, the following JavaScript errors will be thrown (depending on the br
 * `ReferenceError: jQuery is not defined` (in Google Chrome and Firefox)
 * `jQuery is undefined` (in Internet Explorer)
 
-### Solution
+**Solution**
 
 Make sure that jQuery is included only:
 * before the Kendo UI JavaScript files; and
@@ -57,7 +57,7 @@ Depending on the browser, the following JavaScript errors will be thrown:
 >
 > Not just the Kendo UI Grid, but all Kendo UI widgets are affected by this issue with only the error message being different. For example, `kendoChart is not a function` or `Object has no method kendoEditor`.
 
-### Solution
+**Solution**
 
 Make sure that jQuery is not included more than once in your page. Remove any duplicate `script` references to jQuery. Include all [required Kendo JavaScript files](https://docs.telerik.com/kendo-ui/intro/supporting/jquery-support).
 
@@ -74,7 +74,7 @@ where more information can be found.
 >
 > All Kendo widgets, which add ARIA attributes to HTML elements, will be affected.
 
-### Solution
+**Solution**
 
 **Option 1** Force Internet Explorer to use the Edge mode:
 
@@ -98,7 +98,7 @@ The `Unknown DataSource transport type json` warning might be caused by either o
 
 * A JavaScript file is missing when using a DataSource type that is not included in `kendo.all.min.js`. For example, `aspnetmvc-ajax`, `jsdo`, and others. Specifically, `json` is not a valid DataSource `type` and it does not require a separate JavaScript file.
 
-### Solution
+**Solution**
 
 * Use a valid `type` value; or 
 * remove the `type` property; or
@@ -110,17 +110,17 @@ Note that the [dataSource `type`](/api/javascript/data/datasource/configuration/
 
 The `Uncaught TypeError: e.slice is not a function` error indicates that the response which is received from the remote data source is not an array while the widget expects a simple array for its data source.
 
-Widgets like the TreeView or the MultiSelect need only a simple array while the Grid needs an envelope with additional information such as total, errors, and aggregates. For more information on what information each widget expects, review the demo of the respective control.
+Widgets like the TreeView or the MultiSelect need only a simple array. Conversly, Grid needs an envelope with additional information such as total, errors, and aggregates. For more information on what information each widget expects, review the demo of the respective control.
 
 The possible causes for the `e.slice is not a function` error can be any or a combination of the following:
 
 **Cause 1**
 
-The server does not return an actual list of objects but empty data, an error response, or a single item. In such cases, you get a single object or HTML instead of a serialized array.
+The server does not return an actual list of objects. Instead, it returns empty data, an error response, or a single item. In such cases, you get a single object or HTML instead of a serialized array.
 
 **Solution 1**
 
-Step through the server method that returns data and monitor the response in the browser dev toolbar to see what you get and ensure it is something like `[{"fieldName": 123, "otherField": "someValue"}, {"fieldName": 234, "otherField": "otherValue"}]`.
+Step through the server method that returns data and monitor the response in the browser dev toolbar. See what you get and ensure that it is something like `[{"fieldName": 123, "otherField": "someValue"}, {"fieldName": 234, "otherField": "otherValue"}]`.
 
 **Cause 2**
 
@@ -141,13 +141,17 @@ Use either of the following suggestions:
           }
 
 
-### Input Widgets Do Not Raise Change Event When API Is Used
+### Issue: Input Widgets Do Not Raise Change Event When API Is Used
 
-The change event of an input widget is triggered only by user action. DOM elements work in the same way. If you need to trigger an event manually use the [trigger method](/api/javascript/ui/widget/methods/trigger).
+The change event of an input widget is triggered only by user action. DOM elements work in the same way. 
 
-### Creating Multiple Widgets Throws JavaScript Errors
+**Solution**
 
-This will happen if two or more widgets are initialized from elements that have same IDs. jQuery will find only the first one every time it searches for it and thus try to initialize the first element in the DOM multiple times.
+If you need to trigger an event manually, use the [trigger method](/api/javascript/ui/widget/methods/trigger).
+
+### Issue: Creating Multiple Widgets Throws JavaScript Errors
+
+This will happen if two or more widgets are initialized from elements with identical IDs. jQuery will find only the first one every time it searches for it. Therefore, jQuery will try to initialize the first element in the DOM multiple times.
 
 **Solution**
 
